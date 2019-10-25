@@ -7,14 +7,8 @@ package com.example.nestedclassesexamples.inner;
 
 public class TestInner {
 
-    public static void main(String args[]) {
-        //create instance of outer class first:
-        OuterClass outClass = new OuterClass();
+	public static void main(String args[]) {
 
-         //create instance of inner class:
-        OuterClass.InnerClass inner = outClass.new InnerClass();
-
-        inner.accessOuter();
-    }
+	}
 
 }

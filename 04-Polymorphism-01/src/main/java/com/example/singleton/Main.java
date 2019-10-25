@@ -7,7 +7,7 @@ public class Main {
 		SingletonClass s1 = SingletonClass.getInstance();
 
 		System.out.println(s1);
-		System.out.println("SingletonClass data: " + s1.getNextId());
+		// System.out.println("SingletonClass data: " + s1.getNextId());
 		System.out.println(s1);
 
 		System.out.println();
@@ -15,7 +15,7 @@ public class Main {
 		SingletonClass s2 = SingletonClass.getInstance();
 
 		System.out.println(s2);
-		System.out.println("SingletonClass data: " + s2.getNextId());
+		// System.out.println("SingletonClass data: " + s2.getNextId());
 		System.out.println(s2);
 
 		System.out.println();

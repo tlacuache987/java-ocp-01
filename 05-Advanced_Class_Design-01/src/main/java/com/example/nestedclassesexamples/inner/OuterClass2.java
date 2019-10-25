@@ -12,36 +12,4 @@ package com.example.nestedclassesexamples.inner;
  */
 public class OuterClass2 {
 
-	int outerVariable = 100;
-
-	static int staticOuterVariable = 200;
-
-	static class StaticMemberClass {
-		int innerVariable = 20;
-
-		int getSum(int parameter) {
-			// Cannot access outerVariable here
-			return innerVariable + staticOuterVariable + parameter;
-		}
-	}
-
-	public static void main(String[] args) {
-
-		OuterClass2 outer = new OuterClass2();
-
-		outer.run();
-
-		System.out.println();
-
-		StaticMemberClass inner = new StaticMemberClass();
-
-		System.out.println(inner.getSum(3));
-
-	}
-
-	void run() {
-		StaticMemberClass localInner = new StaticMemberClass();
-		System.out.println(localInner.getSum(5));
-	}
-
 }

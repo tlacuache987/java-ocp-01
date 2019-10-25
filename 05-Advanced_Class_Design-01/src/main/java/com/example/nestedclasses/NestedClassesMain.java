@@ -5,7 +5,7 @@ public class NestedClassesMain {
 	public static void main(String[] args) {
 
 		OuterClass co = new OuterClass();
-		co.method1();
+		/*co.method1();
 		co.method2();
 
 		co.r.run();
@@ -17,6 +17,6 @@ public class NestedClassesMain {
 		sn.staticNestedPrint();
 
 		OuterClass.A.B nested = co.new A().new B();
-		nested.method();
+		nested.method();*/
 	}
 }

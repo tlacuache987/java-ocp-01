@@ -7,33 +7,4 @@ package com.example.nestedclassesexamples.inner;
 
 public class OuterClass1 {
 
-	int outerVariable = 100;
-
-	class MemberClass {
-
-		int innerVariable = 20;
-
-		int getSum(int parameter) {
-			return innerVariable + outerVariable + parameter;
-		}
-	}
-
-	public static void main(String[] args) {
-
-		OuterClass1 outer = new OuterClass1();
-
-		outer.run();
-		
-		System.out.println();
-
-		MemberClass inner = outer.new MemberClass();
-
-		System.out.println(inner.getSum(3));
-
-	}
-
-	void run() {
-		MemberClass localInner = new MemberClass();
-		System.out.println(localInner.getSum(5));
-	}
 }
