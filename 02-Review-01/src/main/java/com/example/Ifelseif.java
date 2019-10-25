@@ -8,7 +8,8 @@ package com.example;
 public class Ifelseif {
 
 	public static void main(String args[]) {
-		int x = 40;
+
+		int x = 20;
 
 		if (x == 10) {
 			System.out.print("Value of X is 10");

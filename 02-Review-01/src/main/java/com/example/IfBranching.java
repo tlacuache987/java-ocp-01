@@ -8,7 +8,8 @@ package com.example;
 public class IfBranching {
 
 	public static void main(String args[]) {
-		int x = 30;
+		
+		int x = 10;
 
 		if (x < 20) {
 			System.out.print("This is if statement\n");

@@ -10,4 +10,15 @@ public class Employee {
 
 	public Employee() {
 	}
+
+	public void changeName(String newName) {
+		if (newName != null) {
+			this.name = newName;
+		}
+	}
+
+	public void raiseSalary(double increase) {
+		this.salary += increase;
+	}
+
 }

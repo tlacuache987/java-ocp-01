@@ -21,6 +21,12 @@ public class Overloading {
 	}
 
 	public static void main(String args[]) {
-
+		Overloading ov = new Overloading();
+		
+		ov.print(1.0F);
+		
+		ov.print("Hola");
+		
+		ov.print(5);
 	}
 }

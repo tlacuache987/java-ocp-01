@@ -12,14 +12,18 @@ package com.example;
  */
 public class PassByValue {
 
-	void callByValue(int x) {
-		x = 100;
+	void callByValue(int y) {
+		y = 100;
+		System.out.println(y);
 	}
 
 	public static void main(String args[]) {
+		
 		int x = 50;
+		
 		PassByValue pv = new PassByValue();
 		pv.callByValue(x);
+		
 		System.out.println(x);
 
 	}

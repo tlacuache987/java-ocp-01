@@ -2,10 +2,12 @@ package com.example;
 
 public class StringOperations {
 
-	public static void main(String arg[]) {
+	public static void main2(String arg[]) {
 
 		StringBuilder sb = new StringBuilder("hello");
+		
 		System.out.println("string sb: " + sb);
+		
 		sb.append(" world");
 		System.out.println("string sb: " + sb);
 
