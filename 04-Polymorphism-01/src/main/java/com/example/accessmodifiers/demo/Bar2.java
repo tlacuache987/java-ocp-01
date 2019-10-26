@@ -10,6 +10,7 @@ public class Bar2 extends Foo2 {
 
 	public void reportSum() {
 		sum += result;
+		//sum += super.result;
 
 		System.out.println(sum);
 	}

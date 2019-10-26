@@ -12,13 +12,14 @@ public class BankEMICalculator {
 	private double loanAmount;
 
 	double monthlypayment;
-	//private EMICalculatorHelper helper = new EMICalculatorHelper();
+
+	private EMICalculatorHelper helper;
 
 	public BankEMICalculator(String CustName, String AccNo, double loanAmt) {
 		this.AccountNo = AccNo;
 		this.CustomerName = CustName;
 		this.loanAmount = loanAmt;
-
+		this.helper = new EMICalculatorHelper();
 	}
 
 	public String getCustomerName() {
@@ -45,21 +46,36 @@ public class BankEMICalculator {
 		this.loanAmount = loanAmount;
 	}
 
-	/*public double getMonthlypayment() {
+	public double getMonthlypayment() {
 		return helper.calcMonthlyPayment(loanAmount);
-	}*/
+	}
 
 	public void setMonthlypayment(double monthlypayment) {
 		this.monthlypayment = monthlypayment;
 	}
 
-	/*public EMICalculatorHelper getHelper() {
+	public EMICalculatorHelper getHelper() {
 		return helper;
 	}
 
 	public void setHelper(EMICalculatorHelper helper) {
 		this.helper = helper;
-	}*/
+	}
 
 	/* Define EMICalculatorHelper class */
+	private class EMICalculatorHelper {
+		int loanTerm = 60;
+		double monthlyinterestRate = 0.9;
+		double interestpermonth = monthlyinterestRate / loanTerm;
+
+		protected double calcMonthlyPayment(double loanAmount) {
+
+			System.out.println("Calculating loan for: " + CustomerName);
+
+			double EMI = (loanAmount * interestpermonth)
+					/ ((1.0) - ((1.0) / Math.pow(1.0 + interestpermonth, loanTerm)));
+			return (Math.round(EMI));
+		}
+	}
+
 }

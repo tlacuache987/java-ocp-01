@@ -4,11 +4,11 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		BankEMICalculator acct1 = new BankEMICalculator("jane", "aa1234", 1000);
+		BankEMICalculator acct1 = new BankEMICalculator("Jane Doe", "aa1234", 1000);
 
-		//double EMIamt = acct1.getMonthlypayment();
+		double EMIamt = acct1.getMonthlypayment();
 
-		//System.out.print(EMIamt);
+		System.out.print(EMIamt);
 	}
 
 }

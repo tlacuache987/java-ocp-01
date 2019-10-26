@@ -2,15 +2,6 @@ package com.example.anonymousinnerclasses;
 
 public class Z05Analyzer {
 
-	public static void searchArr(String[] strList, String searchStr, StringAnalyzer analyzer) {
-
-		for (String currentStr : strList) {
-			if (analyzer.analyze(currentStr, searchStr)) {
-				System.out.println("Match: " + currentStr);
-			}
-		}
-	}
-
 	public static void main(String[] args) {
 
 		String[] strList = { "tomorrow", "toto", "to", "timbukto", "the", "hello", "heat" };
@@ -19,6 +10,17 @@ public class Z05Analyzer {
 		System.out.println("Searching for: " + searchStr);
 
 		// Lambda Expression replaces anonymous inner class
+		arrayIterator(strList, searchStr, (String t, String s) -> {
+			return t.contains(s);
+		});
 
+	}
+
+	public static void arrayIterator(String[] strList, String searchStr, StringAnalyzer analyzTool) {
+		for (String current : strList) {
+			if (analyzTool.analyze(current, searchStr)) {
+				System.out.println("Match: " + current);
+			}
+		}
 	}
 }

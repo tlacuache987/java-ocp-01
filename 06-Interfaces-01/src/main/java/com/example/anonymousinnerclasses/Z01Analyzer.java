@@ -10,6 +10,14 @@ public class Z01Analyzer {
 		System.out.println("Searching for: " + searchStr);
 
 		// Create regular class
+		AnalyzerTool analyzTool = new AnalyzerTool();
+		
+		System.out.println("==Contains==");
+		for(String current : strList) {
+			if(analyzTool.arrContains(current, searchStr)) {
+				System.out.println("Match: " + current);
+			}
+		}
 
 	}
 }

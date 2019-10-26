@@ -8,5 +8,7 @@ public class Bar extends Foo {
 
 	public void reportSum() {
 		sum += result;
+		
+		//sum += value; // compile error
 	}
 }

@@ -10,6 +10,13 @@ public class Z02Analyzer {
 		System.out.println("Searching for: " + searchStr);
 
 		// Call concrete class that implments StringAnalyzer
+		StringAnalyzer analyzTool = new ContainsAnalyzer();
 
+		System.out.println("==Contains==");
+		for (String current : strList) {
+			if (analyzTool.analyze(current, searchStr)) {
+				System.out.println("Match: " + current);
+			}
+		}
 	}
 }

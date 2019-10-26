@@ -16,8 +16,8 @@ public final class BetterContact {
 	public BetterContact(String firstName, String lastName, Date dob) {
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.dob = dob;
-		// this.dob = new Date(dob.getTime()); // Date ia mutable object, can be
+		// this.dob = dob;
+		this.dob = new Date(dob.getTime()); // Date ia mutable object, can be
 		// modified by using Date.setXXX() hence to
 		// prevent that
 	}

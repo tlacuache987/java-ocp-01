@@ -7,7 +7,8 @@ public class Bar3 extends Foo3 {
 	private int sum = 10;
 
 	public void reportSum() {
-		sum += getResult();
+		//sum += getResult();
+		sum += super.getResult();
 		
 		System.out.println(sum);
 	}
@@ -18,9 +19,9 @@ public class Bar3 extends Foo3 {
 		bar.reportSum();
 	}
 
-	/*@Override
+	@Override
 	public int getResult() {
 		return 1;
-	}*/
+	}
 
 }

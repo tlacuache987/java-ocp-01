@@ -12,3 +12,29 @@ public abstract class Shape {
 	abstract double calculateArea();
 
 }
+
+class Rectangle extends Shape {
+	Rectangle(double a, double b) {
+		super(a, b);
+	}
+
+	@Override
+	double calculateArea() {
+		System.out.println("Area for rectangle.");
+		return height * width;
+	}
+
+}
+
+class Triangle extends Shape {
+	Triangle(double a, double b) {
+		super(a, b);
+	}
+
+	@Override
+	double calculateArea() {
+		System.out.println("Area for triangle.");
+		return height * width / 2;
+	}
+
+}
