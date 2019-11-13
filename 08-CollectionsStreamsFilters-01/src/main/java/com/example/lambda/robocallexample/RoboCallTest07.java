@@ -1,6 +1,8 @@
 package com.example.lambda.robocallexample;
 
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 /**
  *
@@ -16,7 +18,19 @@ public class RoboCallTest07 {
 		System.out.println("\n=== Calling all Drivers Lambda ===");
 		
 		// ?? call all drivers using stream -> filter -> forEach
-		
+		pl.stream()
+			.filter(p -> p.getAge() >= 16)
+			.forEach(p -> robo.roboCall(p));
 
+		pl.stream()
+			.filter(p -> p.getAge() >= 16)
+			.forEach(robo::roboCall);
+		
+		Predicate<Person> consumer = RoboCallTest07::lala;
+	}
+
+	public static boolean lala(Person p) {
+		System.out.println(p);
+		return false;
 	}
 }

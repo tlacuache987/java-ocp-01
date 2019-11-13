@@ -2,6 +2,7 @@ package com.example.lambda.employeesearch;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 /**
  *
@@ -13,15 +14,19 @@ public class A04FindFirstLazy {
 
 		List<Employee> eList = Employee.createShortList();
 
-		System.out.println("\n== CO Bonuses ==");
-		// ??
-
 		System.out.println("\n== First CO Bonus ==");
+
+		Stream<Employee> stream = eList.stream()
+				.filter(e -> e.getRole().equals(Role.EXECUTIVE))
+				.peek(e -> System.out.println("Executive filtered"))
+				.filter(e -> e.getState().equals("CO"));
 		
-		Optional<Employee> result = null; // ??
+		System.out.println("Hello im Lazy");
+				
+		Optional<Employee> result = stream.findFirst(); // ??
 
 		if (result.isPresent()) {
-			result.get().printSummary();
+			result.get().print();
 		}
 	}
 }

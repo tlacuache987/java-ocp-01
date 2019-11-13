@@ -26,5 +26,18 @@ public class TestComparator {
 		for (Student student : studentList) {
 			System.out.println(student);
 		}
+
+		Collections.sort(studentList, (Student s1, Student s2) -> {
+			if (s1.getGpa() < s2.getGpa()) {
+				return -1;
+			} else if (s1.getGpa() > s2.getGpa()) {
+				return 1;
+			} else {
+				return 0;
+			}
+		});
+		for (Student student : studentList) {
+			System.out.println(student);
+		}
 	}
 }

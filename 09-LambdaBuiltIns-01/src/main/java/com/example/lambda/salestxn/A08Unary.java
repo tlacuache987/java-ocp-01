@@ -14,9 +14,13 @@ public class A08Unary {
 		List<SalesTxn> tList = SalesTxn.createTxnList();
 		SalesTxn first = tList.get(0);
 
-		UnaryOperator<String> unaryStr = null;// ??
+		UnaryOperator<String> unaryStr = s -> s.toUpperCase() + " :)";// ??
 
 		System.out.println("== Upper Buyer");
 		// ??
+		tList.stream()
+			.map(s -> s.getBuyerName())
+			.map(unaryStr)
+			.forEach(System.out::println);
 	}
 }

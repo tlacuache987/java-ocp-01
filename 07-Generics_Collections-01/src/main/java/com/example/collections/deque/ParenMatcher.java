@@ -57,5 +57,16 @@ public class ParenMatcher {
 		expressions[3] = "if ((firstName.equals(newFirstName) && (lastName.equals(newLastName))));";
 
 		pm.processArray(expressions);
+
+		// 0000000000000000000001 1
+		// 0000000000000000000010 // bitwise
+		// 0000000000000000000000
+		System.out.println(1 & 2);
+
+		// 0000000000000000000100 1
+		System.out.println(1 << 2);
+
+		// 0000000000000000000100 1
+		System.out.println(4 >> 2);
 	}
 }

@@ -14,7 +14,11 @@ public class A08CalcAvg {
 		System.out.println("\n== Average CO Bonus ==");
 		OptionalDouble result;
 
-		result = null; // ??
+		result = eList.stream()
+				.filter(e -> e.getRole().equals(Role.EXECUTIVE))
+				.filter(e -> e.getState().equals("CO"))
+				.mapToDouble(e -> e.getSalary() * Bonus.byRole(e.getRole()))
+				.average(); // ??
 
 		if (result.isPresent()) {
 			System.out.printf("Average Bonuses paid: $%,6.2f %n", result.getAsDouble());
@@ -22,7 +26,13 @@ public class A08CalcAvg {
 
 		System.out.println("\n== Average CO Bonus Details ==");
 
-		result = null; // ??
+		result = eList.stream()
+				.filter(e -> e.getRole().equals(Role.EXECUTIVE))
+				.filter(e -> e.getState().equals("CO"))
+				.peek(e -> System.out.print("Employee: " + e.getSurName()))
+				.mapToDouble(e -> e.getSalary() * Bonus.byRole(e.getRole()))
+				.peek(d -> System.out.printf(", Bonus: $%,.2f %n", d))
+				.average(); // ??
 
 		if (result.isPresent()) {
 			System.out.printf("Average Bonuses paid: $%,6.2f %n", result.getAsDouble());

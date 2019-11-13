@@ -2,6 +2,10 @@ package com.example.lambda.robocallexample;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 /**
  * @author MikeW
@@ -189,6 +193,68 @@ public class Person {
 				.state("CO").code("222333").build());
 
 		return people;
+	}
+
+	public static void main(String[] args) {
+		List<Person> list = Person.createShortList();
+
+		// list.forEach(t -> System.out.println(t));
+
+		Consumer<Person> c1 = (p) -> System.out.println(p);
+		Consumer<Person> c2 = System.out::println;
+
+		Stream<Person> stream = list.stream().filter(p -> {
+			System.out.println("filtrando");
+			return p.getAge() >= 23;
+		}).filter(p -> p.getAge() <= 65);
+
+		System.out.println("hola crayola");
+
+		stream = stream.filter(p -> p.getGender() != Gender.MALE);
+
+		System.out.println("lol");
+
+		long n = stream.parallel().count();
+
+		System.out.println(n);
+
+		System.out.println(list);
+
+		Predicate<? super Person> mayoresA23 = p -> p.getAge() >= 23;
+
+		long nn = list.stream().filter(mayoresA23).filter(p -> p.getAge() <= 65)
+				.filter(p -> p.getGender() != Gender.MALE).count();
+
+		System.out.println("=======");
+
+		list.stream().filter(mayoresA23).filter(p -> p.getAge() <= 65).filter(p -> p.getGender() != Gender.MALE)
+				.forEach(p -> p.print());
+
+		Consumer<Person> cp = p -> p.print();
+
+		Consumer<Person> cpp1 = new Consumer<Person>() {
+			@Override
+			public void accept(Person t) {
+				t.print();
+			}
+		};
+
+		Consumer<Person> cpp2 = Person::print;
+
+		list.stream().filter(mayoresA23).filter(p -> p.getAge() <= 65).filter(p -> p.getGender() != Gender.MALE)
+				.forEach(new PersonConsumer());
+
+		list.stream().filter(mayoresA23).filter(p -> p.getAge() <= 65).filter(p -> p.getGender() != Gender.MALE)
+				.forEach(Person::print);
+	}
+
+}
+
+class PersonConsumer implements Consumer<Person> {
+
+	@Override
+	public void accept(Person t) {
+		t.print();
 	}
 
 }

@@ -14,9 +14,10 @@ public class A03Function {
 		List<SalesTxn> tList = SalesTxn.createTxnList();
 		SalesTxn first = tList.get(0);
 
-		Function<SalesTxn, String> buyerFunction = null;// ??
+		Function<SalesTxn, String> buyerFunction = s -> s.getBuyerName();// ??
 
 		System.out.println("\n== First Buyer");
 		// ??
+		System.out.println(buyerFunction.apply(first));
 	}
 }

@@ -8,9 +8,10 @@ public class A06DoubleFunction {
 
 		A06DoubleFunction test = new A06DoubleFunction();
 
-		DoubleFunction<String> calc = null; // ??
+		DoubleFunction<String> calc = d -> String.valueOf("$ "+d); // ??
 
 		String result = calc.apply(20);
 		System.out.println("New value is: " + result);
+		
 	}
 }

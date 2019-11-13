@@ -9,21 +9,27 @@ import java.util.function.Predicate;
  */
 public class RoboCall03 {
 
-	public void phoneContacts(List<Person> pl) {
+	public void phoneContacts(List<Person> pl, Predicate<Person> predicate) {
 		for (Person p : pl) {
-			// ??
+			if(predicate.test(p)) {
+				roboCall(p);
+			}
 		}
 	}
 
-	public void emailContacts(List<Person> pl) {
+	public void emailContacts(List<Person> pl, Predicate<Person> predicate) {
 		for (Person p : pl) {
-			// ??
+			if(predicate.test(p)) {
+				roboEmail(p);
+			}
 		}
 	}
 
-	public void mailContacts(List<Person> pl) {
+	public void mailContacts(List<Person> pl, Predicate<Person> predicate) {
 		for (Person p : pl) {
-			// ??
+			if(predicate.test(p)) {
+				roboMail(p);
+			}
 		}
 	}
 

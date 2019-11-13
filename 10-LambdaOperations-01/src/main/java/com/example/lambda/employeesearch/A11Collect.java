@@ -18,11 +18,19 @@ public class A11Collect {
 		List<Employee> nList = new ArrayList<>();
 
 		// Collect CO Executives
-		nList = null; // ??
+		nList = eList.stream()
+				.filter(e -> e.getRole().equals(Role.EXECUTIVE))
+				.filter(e -> e.getState().equals("CO"))
+				.sorted(
+						Comparator
+							.comparing(Employee::getDept)
+							.thenComparing(Employee::getSurName)
+				).collect(Collectors.toList());
 
 		System.out.println("\n== CO Bonus Details ==");
 
 		// ??
+		nList.forEach(Employee::printSummary);
 
 	}
 

@@ -15,11 +15,14 @@ public class A05AnyMatch {
 
 		System.out.println("\n== First CO Bonus ==");
 
-		boolean anyMatch = false; // ??
+		boolean anyMatch = eList.stream()
+				.anyMatch(e -> e.getState().equals("CO")); // ??
 		
 		if (anyMatch) {
 
-			Optional<Employee> result = null; // ??
+			Optional<Employee> result = eList.stream()
+					.filter(e -> e.getState().equals("CO"))
+					.findFirst(); // ??
 
 			if (result.isPresent()) {
 				result.get().printSummary();

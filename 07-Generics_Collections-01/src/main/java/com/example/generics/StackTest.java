@@ -16,6 +16,9 @@ public class StackTest {
 
 		// push elements of integerElements onto integerStack
 		testPushInteger(integerStack, integerElements);
+		
+		System.out.println(integerStack);
+		
 		testPopInteger(integerStack); // pop from integerStack
 	}
 

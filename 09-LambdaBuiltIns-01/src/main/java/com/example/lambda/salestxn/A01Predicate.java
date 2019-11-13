@@ -13,12 +13,25 @@ public class A01Predicate {
 
 		List<SalesTxn> tList = SalesTxn.createTxnList();
 
-		Predicate<SalesTxn> massSales = null; // ??
+		Predicate<SalesTxn> massSales = sales -> sales
+				.getState().getStr().equals("MA"); // ??
+		
+		Predicate<SalesTxn> massSales2 = sales -> sales
+				.getState().equals(State.MA); // ??
 
 		System.out.println("\n== Sales - Stream");
 		// ??
+		tList.stream().filter(massSales).forEach(System.out::println);
 
+		System.out.println();
+		
 		System.out.println("\n== Sales - Method Call");
 		// ??
+		for(SalesTxn s : tList) {
+			if(massSales2.test(s)) {
+				System.out.println(s);
+			}
+		}
+		
 	}
 }

@@ -33,4 +33,10 @@ public class Stack<T> {
 		// remove and return top element of Stack
 		return elements.remove(elements.size() - 1);
 	}
+
+	@Override
+	public String toString() {
+		return "Stack [elements=" + elements + "]";
+	}
+
 }

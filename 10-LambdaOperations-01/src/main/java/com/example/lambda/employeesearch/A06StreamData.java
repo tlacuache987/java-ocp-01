@@ -15,26 +15,55 @@ public class A06StreamData {
 		List<Employee> eList = Employee.createShortList();
 
 		System.out.println("\n== Executive Count ==");
-		long execCount = 0; // ??
+		long execCount = eList.stream()
+				.filter(e -> e.getRole().equals(Role.EXECUTIVE))
+				.count(); // ??
 
 		System.out.println("Exec count: " + execCount);
 
 		System.out.println("\n== Highest Paid Exec ==");
-		Optional highestExec = null; // ??
+		
+		Optional<Employee> highestExec = eList.stream()
+				.filter(e -> e.getRole().equals(Role.EXECUTIVE))
+				.max(Employee::sortBySalary); // ??
 
 		if (highestExec.isPresent()) {
-			Employee temp = null; // ??
+			Employee temp = highestExec.get(); // ??
 			System.out.printf("Name: " + temp.getGivenName() + " " + temp.getSurName() + "   Salary: $%,6.2f %n ",
 					temp.getSalary());
 		}
 
 		System.out.println("\n== Lowest Paid Staff ==");
-		Optional lowestStaff = null; // ??
+		Optional<Employee> lowestStaff = eList.stream()
+				.filter(e -> e.getRole().equals(Role.EXECUTIVE))
+				.min(Comparator.comparingDouble(e -> e.getSalary())); // ??
 
 		if (lowestStaff.isPresent()) {
-			Employee temp = null; // ??
+			Employee temp = lowestStaff.get(); // ??
+			System.out.printf("Name: " + temp.getGivenName() + " " + temp.getSurName() + "   Salary: $%,6.2f %n ",
+					temp.getSalary());
+		}
+		
+		System.out.println("\n== Lowest Paid Staff ==");
+		Optional<Employee> lowestStaff2 = eList.stream()
+				.filter(e -> e.getRole().equals(Role.EXECUTIVE))
+				.min(new EmployeeComparator()); // ??
+
+		if (lowestStaff2.isPresent()) {
+			Employee temp = lowestStaff2.get(); // ??
 			System.out.printf("Name: " + temp.getGivenName() + " " + temp.getSurName() + "   Salary: $%,6.2f %n ",
 					temp.getSalary());
 		}
 	}
+}
+
+class EmployeeComparator implements Comparator<Employee> {
+
+	@Override
+	public int compare(Employee a, Employee b) {
+		Double s1 = new Double(a.getSalary());
+		Double s2 = new Double(b.getSalary());
+		return s1.compareTo(s2);
+	}
+
 }

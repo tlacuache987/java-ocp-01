@@ -13,12 +13,17 @@ public class A04Supplier {
 	public static void main(String[] args) {
 
 		List<SalesTxn> tList = SalesTxn.createTxnList();
-		Supplier<SalesTxn> txnSupplier = null; // ??
-
-		// ??
+		Supplier<SalesTxn> txnSupplier = A04Supplier::createSalesTxn; // ??
+		Supplier<SalesTxn> txnSupplier2 = () -> A04Supplier.createSalesTxn(); // ??
 		
 		System.out.println("\n== TList");
 		// ??
+		System.out.println("Actual size: " + tList.size());
+		
+		tList.add(txnSupplier.get());
+		tList.add(txnSupplier2.get());
+		
+		System.out.println("Actual size: " + tList.size());
 	}
 
 	private static SalesTxn createSalesTxn() {

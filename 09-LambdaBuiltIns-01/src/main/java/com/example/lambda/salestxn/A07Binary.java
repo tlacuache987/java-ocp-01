@@ -15,9 +15,15 @@ public class A07Binary {
 		SalesTxn first = tList.get(0);
 		String testState = "CA";
 
-		BiPredicate<SalesTxn, String> stateBiPred = null; // ??
+		BiPredicate<SalesTxn, String> stateBiPred = 
+				(sales, str) -> sales.getState().getStr().equals(str); // ??
 
 		System.out.println("\n== First is CA?");
 		// ??
+		System.out.println(first);
+		
+		System.out.println();
+		
+		System.out.println(stateBiPred.test(first, testState));
 	}
 }
