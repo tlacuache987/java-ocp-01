@@ -6,12 +6,21 @@ import java.io.InputStream;
 
 public class TryCatchMain {
 
-	public static void main(String[] args) throws FileNotFoundException { // delete throws
+	public static void main(String[] args) { // delete throws
 
 		// ?? Surround with try catch
 		System.out.println("About to open a file");
-		InputStream in = new FileInputStream("missingfile.txt");
-		System.out.println("File open");
-
+		
+		try {
+			
+			InputStream in = new FileInputStream("missingfile.txt");
+			
+			System.out.println("File open");
+			
+		} catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+		}
+		
 	}
 }

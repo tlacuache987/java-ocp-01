@@ -20,6 +20,7 @@ public class InvariantDemo {
 		int value = scanner.nextInt();
 
 		// ?? add invariant
+		assert value >= 0 && value <= 20 : "Invalid number entered.";
 
 		System.out.printf("You have entered %d\n", value);
 	}

@@ -20,18 +20,18 @@ public class DateTimeFormatterExample {
 	 */
 	public static void main(String[] args) {
 
-		ZonedDateTime now = null; // ??
-		DateTimeFormatter formatter = null; // ??
+		ZonedDateTime now = ZonedDateTime.now(); // ??
+		DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME; // ??
 		
 		System.out.println(now.format(formatter));
 
-		formatter = null; // ??
+		formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM); // ??
 		System.out.println(now.format(formatter));
 
-		formatter = null; // ??
+		formatter = DateTimeFormatter.ofPattern("EEEE, MMMM dd, yyyy G, hh:mm a 'Q'q VV"); // ??
 		System.out.println(now.format(formatter));
 
-		formatter = null; // ??
+		formatter = DateTimeFormatter.ofPattern("'Ciudad de México a' dd 'de' MMMM 'del' YYYY', a las: 'hh:mm:ss a"); // ??
 		System.out.println(now.format(formatter));
 	}
 }

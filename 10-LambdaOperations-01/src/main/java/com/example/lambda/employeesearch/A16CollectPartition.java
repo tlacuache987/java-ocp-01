@@ -18,7 +18,11 @@ public class A16CollectPartition {
 		Map<Boolean, List<Employee>> gMap = new HashMap<>();
 
 		// Collect CO Executives
-		gMap = null; // ??
+		gMap = eList.stream()
+				.collect( Collectors.partitioningBy(
+						e -> e.getRole().equals(Role.EXECUTIVE) &&
+						e.getSalary() >= 120_000
+					)); // ??
 
 		System.out.println("\n== Employees by Dept ==");
 		gMap.forEach((k, v) -> {

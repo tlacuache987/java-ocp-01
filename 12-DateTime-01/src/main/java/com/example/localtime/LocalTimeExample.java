@@ -1,6 +1,9 @@
 package com.example.localtime;
 
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
+
 import static java.time.temporal.ChronoUnit.*;
 import static java.lang.System.out;
 
@@ -9,30 +12,30 @@ public class LocalTimeExample {
 	public static void main(String[] args) {
 		LocalTime now, nowPlus, nowHrsMins, lunch, bedtime;
 
-		now = null; // ??
+		now = LocalTime.now(); // ??
 
 		out.println("The time now is: " + now);
 
-		nowPlus = null; // ??
+		nowPlus = now.plusHours(1).plusMinutes(15); // ??
 
 		out.println("What time is it 1 hour 15 minutes from now? " + nowPlus);
 
-		nowHrsMins = null; // ??
+		nowHrsMins = now.truncatedTo(ChronoUnit.MINUTES); // ??
 
 		out.println("Truncate the current time to minutes: " + nowHrsMins);
 
 		out.println("It is the " + now.toSecondOfDay() / 60 + "th minute of the day.");
 
-		lunch = null; // ??
+		lunch = LocalTime.of(11, 30); // ??
 
-		out.println("Is lunch in my future? " + null); // ??
+		out.println("Is lunch in my future? " + lunch.isAfter(now)); // ??
 
-		long minsToLunch = -1; // ??
+		long minsToLunch = now.until(lunch, ChronoUnit.MINUTES); // ??
 		out.println("Minutes til lunch: " + minsToLunch);
 
-		bedtime = null; // ??
+		bedtime = LocalTime.of(23, 30); // ??
 
-		long hrsToBedtime = -1; // ??
+		long hrsToBedtime = now.until(bedtime, ChronoUnit.HOURS); // ??
 		out.println("How many hours until bedtime? " + hrsToBedtime);
 	}
 }

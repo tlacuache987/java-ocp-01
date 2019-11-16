@@ -4,12 +4,15 @@ import static java.time.Month.MARCH;
 import static java.time.Month.NOVEMBER;
 import static java.time.temporal.ChronoUnit.MINUTES;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.Month;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
+import java.time.temporal.ChronoField;
 import java.time.zone.ZoneOffsetTransition;
 
 public class ZonedDateTimeExample {
@@ -20,7 +23,7 @@ public class ZonedDateTimeExample {
 
 		ZoneId USEast = ZoneId.of("America/New_York");
 
-		LocalDate date = LocalDate.of(2014, MARCH, 23);
+		LocalDate date = LocalDate.of(2019, Month.NOVEMBER, 16);
 		LocalTime time = LocalTime.of(9, 30);
 		LocalDateTime dateTime = LocalDateTime.of(date, time);
 
@@ -41,7 +44,7 @@ public class ZonedDateTimeExample {
 
 		// Gaps/Overlaps
 		// DST Begins March 9th, 2014
-		LocalDate meetDate = LocalDate.of(2014, MARCH, 8);
+		LocalDate meetDate = LocalDate.of(2019, MARCH, 8);
 		LocalTime meetTime = LocalTime.of(16, 00);
 
 		ZonedDateTime meeting = ZonedDateTime.of(meetDate, meetTime, USEast);
@@ -55,7 +58,9 @@ public class ZonedDateTimeExample {
 
 		// Ask the rules if there was a gap or overlap
 		// LocalDateTime lateNight = LocalDateTime.of(2014, NOVEMBER, 2, 1, 30);
-		LocalDateTime lateNight = LocalDateTime.of(2014, MARCH, 9, 2, 30);
+		LocalDateTime lateNight = LocalDateTime.of(2019, MARCH, 10, 2, 30);
+		
+		System.out.println(lateNight.getDayOfWeek());
 
 		System.out.println("Local meeting: " + lateNight);
 
@@ -71,7 +76,7 @@ public class ZonedDateTimeExample {
 		System.out.println("");
 
 		// DST Ends November 2nd, 2014
-		meetDate = LocalDate.of(2104, NOVEMBER, 1);
+		meetDate = LocalDate.of(2109, NOVEMBER, 1);
 		meeting = ZonedDateTime.of(meetDate, meetTime, USEast);
 
 		System.out.println("meeting time:     " + meeting);

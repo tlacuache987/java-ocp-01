@@ -9,12 +9,12 @@ package com.example.asserts;
 public class Controlflow {
 
 	enum Suit {
-		SPADES, DIAMONDS, CLUBS, HEARTS// , ASES
+		SPADES, DIAMONDS, CLUBS, HEARTS, ASES
 	}
 
 	public static void main(String args[]) {
 
-		Suit suit = Suit.SPADES;
+		Suit suit = Suit.ASES;
 
 		switch (suit) {
 		case CLUBS:
@@ -30,8 +30,8 @@ public class Controlflow {
 			System.out.print("spades");
 			break;
 		default:
-			
-			// ?? add invariant
+
+			assert false : "something wrong with Suit enum"; // ?? add invariant
 
 		}
 

@@ -7,26 +7,42 @@ import java.io.InputStream;
 
 public class ThrowMain {
 
-	public static void main(String[] args) throws IOException { // delete throws
+	public static void main(String[] args)  { // delete throws
 
 		// ?? Surround with try catch
-
-		int data = readByteFromFile();
+		try {
+			
+			int data = readByteFromFile("a.txt");
+			
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
 
 	}
 
-	public static int readByteFromFile() throws IOException {
+	public static int readByteFromFile(String name) throws IOException  {
 		// ?? Surround with try catch and re-throws catched-exception
-		File f = new File("a.txt");
-
-		InputStream in = new FileInputStream(f);
-
-		System.out.println("File open");
-
-		if (f.length() > 250)
-			throw new IOException("File too big");
-
-		return in.read();
+		
+		File f = new File(name);
+		
+		try (InputStream in = new FileInputStream(f)) {
+		
+			System.out.println("File open");
+	
+			if (f.length() > 250)
+				throw new IOException("File too big");
+	
+			return in.read();
+			
+		} catch (IOException e) {
+			// perform some logic
+			// ... (log)
+			
+			e.printStackTrace();
+			
+			throw e;
+		}
 
 	}
 

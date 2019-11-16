@@ -26,6 +26,9 @@ public class Stock implements Serializable {
 	private void readObject(ObjectInputStream ois) throws IOException, ClassNotFoundException {
 
 		// implement read object ??
+		ois.defaultReadObject();
+		
+		this.setStockPrice();
 	}
 
 	public String getSymbol() {

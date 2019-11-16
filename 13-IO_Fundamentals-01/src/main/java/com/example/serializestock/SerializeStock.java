@@ -10,6 +10,8 @@ public class SerializeStock {
 
 	public static void main(String[] args) {
 
+		args = new String[] {"lol.exe"};
+		
 		// Determine if we have file name for the Portfolio
 		if (args.length < 1) {
 			System.out.println("Specify the name of a file name for the Portfolio");
@@ -32,12 +34,14 @@ public class SerializeStock {
 		}
 
 		System.out.println("Before serializaton:\n" + p + "\n");
-
+		
 		// Write out the Portfolio ??
 		// Set FileOutputStream and ObjectOutputStream in try-catch-with-resources ??
-		try {
+		try (FileOutputStream fos = new FileOutputStream(args[0]);
+			 ObjectOutputStream oos = new ObjectOutputStream(fos)) {
 
 			// Write (serialize) object ??
+			oos.writeObject(p);
 
 			System.out.println("Successfully wrote Portfolio as an object");
 
@@ -47,11 +51,13 @@ public class SerializeStock {
 
 		// Read the Portfolio back in
 		// Set FileInputStream and ObjectInputStream in try-catch-with-resources ??
-		try {
+		try (FileInputStream fis = new FileInputStream(args[0]);
+			 ObjectInputStream ois = new ObjectInputStream(fis)) {
 
 			// Read (deserialize) object ??
+			Portfolio newP = (Portfolio)ois.readObject();
 
-			System.out.println("Success: read Portfolio back in:\n" + null ); ??
+			System.out.println("Success: read Portfolio back in:\n" + newP ); // ??
 
 		} catch (ClassNotFoundException | IOException i) {
 			System.out.println("Exception reading in Portfolio: " + i);

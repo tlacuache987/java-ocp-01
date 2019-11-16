@@ -7,18 +7,41 @@ import java.io.InputStream;
 
 public class MutlipeCatchBlocksMain {
 
-	public static void main(String[] args) throws IOException { // delete throws
+	public static void main(String[] args) { // delete throws
 
 		// ?? Surround with try catch
 		System.out.println("About to open a file");
 
-		InputStream in = new FileInputStream("missingfile.txt");
+		InputStream in = null;
 
-		System.out.println("File open");
+		try {
+			in = new FileInputStream("missingfile.txt");
 
-		int data = in.read();
+			System.out.println("File open");
 
-		in.close();
+			int data = in.read();
+
+		} catch (FileNotFoundException e) {
+
+			System.err.println(e.getClass().getName());
+
+			e.printStackTrace();
+
+		} catch (IOException e) {
+
+			System.err.println(e.getClass().getName());
+
+			e.printStackTrace();
+		} finally {
+			try {
+				if (in != null)
+					in.close();
+			} catch (IOException e) {
+
+				e.printStackTrace();
+			}
+		}
+		
 
 	}
 }

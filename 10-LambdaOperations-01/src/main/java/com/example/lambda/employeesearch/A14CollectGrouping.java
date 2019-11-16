@@ -18,7 +18,8 @@ public class A14CollectGrouping {
 		Map<String, List<Employee>> gMap = new HashMap<>();
 
 		// Collect CO Executives
-		gMap = null; // ??
+		gMap = eList.stream()
+				.collect( Collectors.groupingBy(Employee::getDept) ); // ??
 
 		System.out.println("\n== Employees by Dept ==");
 		gMap.forEach((k, v) -> {

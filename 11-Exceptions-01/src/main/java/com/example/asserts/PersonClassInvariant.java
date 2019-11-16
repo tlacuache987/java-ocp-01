@@ -16,7 +16,11 @@ public class PersonClassInvariant {
 	int age;
 
 	private void checkAge() {
+		if (!(age >= 18)) {
+			throw new IllegalArgumentException("Cannot change age.");
+		}
 		// ?? add invariant
+		assert age >= 18;
 	}
 
 	public void changeName(String fname) {

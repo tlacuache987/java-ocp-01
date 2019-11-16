@@ -13,7 +13,9 @@ import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.time.Period;
+import java.time.Year;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
@@ -29,50 +31,50 @@ public class InstantDurationPeriodExample {
 	public static void main(String[] args) throws InterruptedException {
 
 		// Instant
-		Instant now = null; // ??
+		Instant now = Instant.now(); // ??
 
-		Thread.sleep(0, 1);
+		Thread.sleep(1, 1);
 
-		Instant later = null; // ??
+		Instant later = Instant.now(); // ??
 
-		System.out.println("now is before later? " + null); // ??
+		System.out.println("now is before later? " + now.isBefore(later)); // ??
 		System.out.println("Now:   " + now);
 		System.out.println("Later: " + later);
 		System.out.println("");
 
 		// Period
-		Period oneDay = null; // ??
+		Period twoDays = Period.ofDays(2); // ??
 
-		System.out.println("Period of one day: " + oneDay);
+		System.out.println("Period of two days: " + twoDays);
 
-		LocalDateTime beforeDST = null; // ??
-		ZonedDateTime newYorkTime = null; // ??
+		LocalDateTime beforeDST = LocalDateTime.of(2019, MARCH, 9, 12, 00); // ??
+		ZonedDateTime newYorkTime = ZonedDateTime.of(beforeDST, ZoneId.of("America/New_York")); // ??
 
 		System.out.println("Before: " + newYorkTime);
-		System.out.println("After:  " + null); // ??
+		System.out.println("After:  " + newYorkTime.plus(twoDays)); // ??
 		System.out.println("");
 
 		// Duration
-		Duration one24hourDay = null; // ??
+		Duration twoDays48Hours = Duration.ofDays(2); // ??
 
-		System.out.println("Duration of one day: " + one24hourDay);
+		System.out.println("Duration of two days: " + twoDays48Hours);
 
-		beforeDST = null; // ??
-		newYorkTime = null; // ??
+		beforeDST = LocalDateTime.of(2019, MARCH, 9, 12, 00); // ??
+		newYorkTime = ZonedDateTime.of(beforeDST, ZoneId.of("America/New_York")); // ??
 
 		System.out.println("Before: " + newYorkTime);
-		System.out.println("After:  " + null); // ??
+		System.out.println("After:  " + newYorkTime.plus(twoDays48Hours)); // ??
 		System.out.println("");
 
 		// Temporal
-		LocalDate christmas = null; // ??
-		LocalDate today = null; // ??
+		LocalDate christmas = Year.of(2019).atMonth(DECEMBER).atDay(25); // ??
+		LocalDate today = LocalDate.now(); // ??
 
-		long days = -1; // ??
+		long days = DAYS.between(today, christmas); // ??
 
 		System.out.println("There are " + days + " shopping days til Christmas");
 
-		Period tilXMas = null; // ??
+		Period tilXMas = Period.between(today, christmas); // ??
 		System.out.println(
 				"There are " + tilXMas.getMonths() + " months and " + tilXMas.getDays() + " days til Christmas");
 	}

@@ -9,18 +9,27 @@ import java.util.Scanner;
 
 public class MultiCatchMain {
 
-	public static void main(String[] args) throws FileNotFoundException { // delete throws
+	public static void main(String[] args) { // delete throws
 
 		System.out.println("About to open a file");
 
 		// ?? Surround with try-with-resources and multi-catch
 
-		InputStream in = new FileInputStream("missingfile.tx");
-		Scanner s = new Scanner(in);
+		try (InputStream in = new FileInputStream("missingfile.tx"); 
+				Scanner s = new Scanner(in)) {
 
-		System.out.println("File open");
+			System.out.println("File open");
 
-		int data = s.nextInt();
+			int data = s.nextInt();
+
+		} catch (FileNotFoundException | IllegalArgumentException e) {
+			System.err.println(e.getClass().getName());
+			e.printStackTrace();
+			
+		} catch (IOException | ClassCastException e) {
+			System.err.println(e.getClass().getName());
+			e.printStackTrace();
+		}
 
 	}
 }

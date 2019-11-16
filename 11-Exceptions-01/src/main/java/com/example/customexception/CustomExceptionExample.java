@@ -5,10 +5,24 @@ public class CustomExceptionExample {
 	public static void main(String[] args) {
 
 		// ?? Surround with try catch
-		CustomExceptionExample.checkPassWord("pass");
+		try {
+
+			CustomExceptionExample.checkPassWord("pass");
+
+		} catch (InvalidPasswordException e) {
+
+			e.printStackTrace();
+		}
 
 		// ?? Surround with try catch
-		CustomExceptionExample.checkPassWord(null);
+		try {
+
+			CustomExceptionExample.checkPassWord(null);
+
+		} catch (InvalidPasswordException e) {
+
+			e.printStackTrace();
+		}
 
 	}
 
@@ -16,21 +30,19 @@ public class CustomExceptionExample {
 
 		int minPassLength = 5;
 
-		try {
+		if (pass == null)
+			throw new InvalidPasswordException("No password provided");
 
-			if (pass.length() < minPassLength) {
-				throw new InvalidPasswordException("The password provided is too short");
-			}
+		assert pass != null; // class invariant
 
-		} catch (NullPointerException e) {
-
-			throw new InvalidPasswordException("No password provided", e);
-
+		if (pass.length() < minPassLength) {
+			throw new InvalidPasswordException("The password provided is too short");
 		}
+
 	}
 }
 
-class InvalidPasswordException extends RuntimeException { // change to Exception
+class InvalidPasswordException extends Exception { // change to Exception
 
 	InvalidPasswordException() {
 	}

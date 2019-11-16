@@ -16,14 +16,16 @@ public class A18CollectMap {
 		List<Employee> eList = Employee.createShortList();
 
 		Map<String, String> gMap = new HashMap<>();
-		Map<String, List<Employee>> deptMap = new HashMap<>();
+		// Map<String, List<Employee>> deptMap = new HashMap<>();
 
 		// Collect eMails and depts to a map
-		gMap = null; // ??
+		gMap = eList.stream()
+				.collect( 
+						Collectors.toMap(Employee::getEmail, Employee::getSurName)); // ??
 
-		System.out.println("\n== Emails and depts ==");
+		System.out.println("\n== Emails and SurNames ==");
 		gMap.forEach((k, v) -> {
-			System.out.println("Email: " + k + " DeptName: " + v);
+			System.out.println("Email: " + k + " Employee SurName: " + v);
 			;
 		});
 

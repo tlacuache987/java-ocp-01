@@ -6,20 +6,26 @@ import java.io.InputStream;
 
 public class ThrowsMain {
 
-	public static void main(String[] args) throws IOException { // delete throws
+	public static void main(String[] args) { // delete throws
 
 		// ?? Surround with try catch
+		try {
 
-		int data = readByteFromFile();
+			int data = readByteFromFile();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
 
 	}
 
 	public static int readByteFromFile() throws IOException {
 
 		// ?? Surround with try-with-resources and multi-catch
-		InputStream in = new FileInputStream("a.txt");
-		System.out.println("File open");
-		return in.read();
-
+		try (InputStream in = new FileInputStream("a.txt")) {
+			System.out.println("File open");
+			return in.read();
+		}
 	}
 }
