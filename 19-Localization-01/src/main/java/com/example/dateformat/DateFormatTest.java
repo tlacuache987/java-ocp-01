@@ -12,12 +12,13 @@ public class DateFormatTest {
 		LocalDateTime today = LocalDateTime.now();
 		
 		// Define France Locale
-		// ??
+		Locale loc = Locale.FRANCE;// ??
 
 		// Add Locale to DateTimeFormatter
-		DateTimeFormatter df = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL); // ??
+		DateTimeFormatter df = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
+																	.withLocale(loc); // ??
 
 		// Print today with Locale.
-		System.out.println("Date: " + today.format(df) + " Locale: " + null); // ??
+		System.out.println("Date: " + today.format(df) + " Locale: " + loc); // ??
 	}
 }

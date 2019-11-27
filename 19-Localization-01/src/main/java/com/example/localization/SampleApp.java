@@ -87,12 +87,12 @@ public class SampleApp {
 	}
 
 	public void setEnglish() {
-		currentLocale = usLocale;
+		currentLocale = usLocale; // Locale.US => MessagesBundle_en_US.properties
 		messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
 	}
 
 	public void setFrench() {
-		currentLocale = frLocale;
+		currentLocale = frLocale; // Locale.FRANCE => MessagesBundle_fr_FR.properties
 		messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
 	}
 
