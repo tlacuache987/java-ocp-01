@@ -19,7 +19,7 @@ public class A01RemoveIf {
 		System.out.println();
 
 		// remove element if e.getState().equals("KS")
-		// ??
+		eList.removeIf(employee -> employee.getState().equals("KS"));// ??
 
 		System.out.println("=== Ending List ===");
 

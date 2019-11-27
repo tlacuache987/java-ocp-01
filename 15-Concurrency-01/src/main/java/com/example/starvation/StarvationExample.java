@@ -34,8 +34,8 @@ class Worker {
 			System.out.println(Thread.currentThread().getName() + " is working");
 
 			try {
-				Thread.sleep(2000); // keep the lock
-				// wait(2000); // release the lock
+				//Thread.sleep(2000); // keep the lock
+				wait(2000); // release the lock
 			} catch (InterruptedException ex) {
 				ex.printStackTrace();
 			}

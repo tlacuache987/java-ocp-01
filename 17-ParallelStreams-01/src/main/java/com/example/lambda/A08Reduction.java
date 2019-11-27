@@ -20,6 +20,7 @@ public class A08Reduction {
 
 		int r2 = IntStream.rangeClosed(1, 5)
 				// ?? compute as parallel // runs in parallel
+				.parallel()
 				.reduce(0, (sum, element) -> sum + element);
 
 		System.out.println("Result: " + r2);
@@ -32,6 +33,7 @@ public class A08Reduction {
 
 		int r4 = IntStream.rangeClosed(1, 5)
 				// ?? compute as parallel // runs in parallel
+				.parallel()
 				.sum();
 
 		System.out.println("Result: " + r4);

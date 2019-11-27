@@ -1,6 +1,10 @@
 package com.example.simplejdbc;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Date;
 
 public class SimpleJDBCTest {
@@ -17,28 +21,30 @@ public class SimpleJDBCTest {
 
 		// Get a Connection from DriverManager, create a Statement and execute query
 		// within try-with-resources
-		try { // ??
+		try ( Connection con = DriverManager.getConnection(url, username, password);
+			  Statement stmt = con.createStatement();
+			  ResultSet rs = stmt.executeQuery(query) ) { // ??
 
 			// Iterate ResultSet to extract results
-			while (true) { // ??
+			while (rs.next()) { // ??
 
-				int empID = -1; // ?? Get ID Column
-				String first = null; // ?? Get FirstName Column
-				String last = null; // ?? Get LastName Column
-				Date birthDate = null; // ?? Get BirthDate Column
-				float salary = -1; // ?? Get Salary Column
+				int empID = rs.getInt("ID"); // ?? Get ID Column
+				String first = rs.getString("FirstName"); // ?? Get FirstName Column
+				String last = rs.getString("LastName"); // ?? Get LastName Column
+				Date birthDate = rs.getDate("BirthDate"); // ?? Get BirthDate Column
+				float salary = rs.getFloat("Salary"); // ?? Get Salary Column
 
 				System.out.println("Employee ID:   " + empID + "\n" + "Employee Name: " + first + " " + last + "\n"
 						+ "Birth Date:    " + birthDate + "\n" + "Salary:        " + salary + "\n");
 			} // end of while
 
-		} catch (Exception ex1) { // ?? Catch SQL Exception, rename argument to ex
+		} catch (SQLException ex) { // ?? Catch SQL Exception, rename argument to ex
 
-			while (ex1 != null) { // ?? rename variable to ex
+			while (ex != null) { // ?? rename variable to ex
 
-				ex1.printStackTrace(); // ?? rename variable to ex
+				ex.printStackTrace(); // ?? rename variable to ex
 
-				SQLException ex = (SQLException) ex1; // ?? Delete this line
+				//SQLException ex = (SQLException) ex; // ?? Delete this line
 				System.out.println("SQLState:  " + ex.getSQLState());
 				System.out.println("Error Code:" + ex.getErrorCode());
 				System.out.println("Message:   " + ex.getMessage());

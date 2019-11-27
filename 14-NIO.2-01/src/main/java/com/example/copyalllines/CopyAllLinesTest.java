@@ -37,10 +37,10 @@ public class CopyAllLinesTest {
 		Charset cs = Charset.defaultCharset();
 
 		// Read the entire file into the List
-		fileLines = null; // ??
+		fileLines = Files.readAllLines(source); // ??
 
 		// Write the lines back out
-		// ??
+		Files.write(target, fileLines, cs, CREATE, TRUNCATE_EXISTING, WRITE);// ??
 	}
 
 	private void checkArguments(String args[]) {
@@ -60,25 +60,25 @@ public class CopyAllLinesTest {
 
 			} else {
 				overwrite = true;
-				source = null; // ??
-				target = null; // ??
+				source = Paths.get("src/main/resources").resolve(args[1]); // ??
+				target = Paths.get("src/main/resources").resolve(args[2]); // ??
 			}
 
 			// Else there are two - assume they are source and target file
 		} else {
-			source = null; // ??
-			target = null; // ??
+			source = Paths.get("src/main/resources").resolve(args[0]); // ??
+			target = Paths.get("src/main/resources").resolve(args[1]); // ??
 		}
 
 		// check that the source is a file
-		boolean isDirectory = false; // ??
+		boolean isDirectory = Files.isDirectory(source); // ??
 		if (isDirectory) {
 			System.out.println(source + " must be a file!");
 			usage();
 		}
 
 		// check that the target does not exist, or we can overwrite it
-		boolean fileExists = false; // ??
+		boolean fileExists = Files.exists(target); // ??
 		if (fileExists && !overwrite) {
 			System.out.println("Target file " + target.getFileName()
 					+ " exists. Use the -o option to overwrite or delete <trget file>.");

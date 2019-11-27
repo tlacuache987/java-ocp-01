@@ -8,9 +8,9 @@ public class SimpleAtomicIntegerTest {
 
 	public static void main(String[] args) {
 
-		ExecutorService executor = null; // ?? Define a new 8 fixed thread pool
+		ExecutorService executor = Executors.newFixedThreadPool(8); // ?? Define a new 8 fixed thread pool
 
-		AtomicInteger counter = null; // ?? Define a new Atomicinteger
+		AtomicInteger counter = new AtomicInteger(); // ?? Define a new Atomicinteger
 
 		for (int i = 0; i < 10; i++) {
 			executor.submit(() -> System.out

@@ -16,11 +16,14 @@ public class A13FlatMap {
 	public static void main(String[] args) {
 
 		// Read basepath + "tempest.txt" file using Files.lines within try-with-resources.
-		try {
+		try (Stream<String> lines = Files.lines(Paths.get(basepath).resolve("tempest.txt"))) {
 
 			// Use flatMap to split all lines in a new Strem of "words", spliting each line by " " (space character)
 			// filter all words that contains "my", use peek to print each word filtered and then count all the ocurrences.
-			long matches = -1; // ??
+			long matches = lines.flatMap( line -> Stream.of(line.split(" ")) )
+					.filter(w -> w.contains("the"))
+					.peek(w -> System.out.println("match: " + w))
+					.count(); // ??
 
 			System.out.println("# of Matches: " + matches);
 			

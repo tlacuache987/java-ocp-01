@@ -16,17 +16,19 @@ public class A09bReadAllNio {
 
 	public static void main(String[] args) {
 
-		Path file = null; // ?? define Path basepath + "tempest.txt".
+		Path file = Paths.get(basepath).resolve("tempest.txt"); // ?? define Path basepath + "tempest.txt".
 		
 		List<String> fileArr;
 
 		try {
 
 			// Read all lines
-			fileArr = null; // ??
+			fileArr = Files.readAllLines(file); // ??
 
 			// Iterate fileArr, filter those lines that contains "PROSPERO". Then print all lines.
-			// ??
+			fileArr.stream()
+				.filter(s -> s.contains("PROSPERO"))
+				.forEach(System.out::println);// ??// ??
 
 		} catch (IOException e) {
 			System.out.println("Message: " + e.getMessage());

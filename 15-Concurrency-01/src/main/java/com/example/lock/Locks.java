@@ -3,6 +3,7 @@ package com.example.lock;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Locks {
 
@@ -10,7 +11,7 @@ public class Locks {
 
 	public static void main(String[] args) throws InterruptedException {
 
-		Lock lock = null; // ?? Define new ReentrantLock.
+		Lock lock = new ReentrantLock(); // ?? Define new ReentrantLock.
 
 		List<String> numbers = new ArrayList<>();
 
@@ -22,6 +23,7 @@ public class Locks {
 				public void run() {
 
 					// ?? lock
+					lock.lock();
 
 					for (int j = 0; j < 10; j++) {
 
@@ -35,6 +37,7 @@ public class Locks {
 					}
 
 					// ?? unlock
+					lock.unlock();
 				}
 
 			}).start();

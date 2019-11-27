@@ -16,10 +16,13 @@ public class A09aReadNio {
 	public static void main(String[] args) {
 
 		// Read basepath + "tempest.txt" using Files.lines within a try-with-resources.
-		try {
+		
+		try (Stream<String> lines = Files.lines(Paths.get(basepath).resolve("tempest.txt"))) {
 
 			// Print all lines.
-			// ??
+			lines
+				.filter(s -> s.contains("PROSPERO"))
+				.forEach(System.out::println);// ??
 
 		} catch (IOException e) {
 			System.out.println("Error: " + e.getMessage());

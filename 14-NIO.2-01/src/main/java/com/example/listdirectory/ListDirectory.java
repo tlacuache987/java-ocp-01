@@ -12,14 +12,14 @@ public class ListDirectory {
 
 	public static void main(String[] args) {
 
-		args = new String[] { ".", "*.xml" }; // ".*", "po*", *.xml"
+		args = new String[] { "." , "*.xml" }; // ".*", "po*", *.xml"
 
 		if (args.length < 1) {
 			System.err.println("Usage: java ListDirectory <directory name> {<filter>}");
 			System.exit(-1);
 		}
 
-		Path dir = null; // ??
+		Path dir = Paths.get(args[0]); // ??
 		String filter = "*";
 
 		if (args.length == 2) {
@@ -28,10 +28,10 @@ public class ListDirectory {
 
 		// Use Files.newDirectoryStream to get a new DirectoryStream to find the filter pattern in
 		// the directory Path. Use a try-with-resources.
-		try {
+		try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir, filter)) {
 			
 			// Iterate DirectoryStream and print all Path filenames.
-			// ??
+			stream.forEach(path -> System.out.println(path.getFileName()));// ??
 
 		} catch (PatternSyntaxException | DirectoryIteratorException | IOException x) {
 			// IOException can never be thrown by the iteration.

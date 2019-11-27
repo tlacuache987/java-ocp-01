@@ -18,7 +18,7 @@ public class EmployeeDAO {
 	public Stream<Employee> getAllEmployeesAsStream() {
 
 		// Define a Stream Builder of Employee objects
-		// ??
+		Stream.Builder<Employee> streamBuilder = Stream.builder();// ??
 
 		try (Connection con = DriverManager.getConnection(url, username, password);
 
@@ -33,10 +33,11 @@ public class EmployeeDAO {
 								.firstName(rs.getString("FirstName"))
 								.lastName(rs.getString("LastName"))
 								.birthDate(rs.getDate("BirthDate"))
-								.salary(rs.getDouble("Salary")).build();
+								.salary(rs.getDouble("Salary"))
+								.build();
 
 				// Add the retrieved employee to the Stream Builder.
-				// ??
+				streamBuilder.add(e); // ??
 
 			} // end of while
 
@@ -58,6 +59,6 @@ public class EmployeeDAO {
 			}
 		}
 
-		return null; // ?? Return a Stream of Employee, call build() method on the streamBuilder object.
+		return streamBuilder.build(); // ?? Return a Stream of Employee, call build() method on the streamBuilder object.
 	}
 }

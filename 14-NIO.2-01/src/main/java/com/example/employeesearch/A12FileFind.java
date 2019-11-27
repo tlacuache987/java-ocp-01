@@ -16,10 +16,10 @@ public class A12FileFind {
 
 		// Find all directories in current Path "." with at most 9 top-down levels.
 		// Use Files.find within a try-with-resources.
-		try {
+		try (Stream<Path> directories = Files.find(Paths.get("."), 9, (p, a) -> a.isDirectory())) {
 
 			// Print all Paths found.
-			// ??
+			directories.forEach(System.out::println);// ??
 
 		} catch (IOException e) {
 			System.out.println("Message: " + e.getMessage());

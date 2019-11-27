@@ -12,6 +12,8 @@ public class A07StreamOf {
 
 		// Define a Stream of "Monday", "Tuesday", "Wedensday", "Thursday"
 		// filter those starts with "T", and print it all.
-		// ??
+		Stream.of("Monday", "Tuesday", "Wedensday", "Thursday")
+				.filter(s -> s.startsWith("T"))
+				.forEach(System.out::println);// ??
 	}
 }

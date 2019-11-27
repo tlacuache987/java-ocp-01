@@ -19,8 +19,8 @@ public class A02ReplaceAll {
 
 		System.out.println();
 
-		// replace all eployee elements with public static Employee buildEmployee(Employee e);
-		// ??
+		// replace all employee elements with public static Employee buildEmployee(Employee e);
+		eList.replaceAll( A02ReplaceAll::buildEmployee );// ??
 
 		System.out.println("\n=== Ending List ===");
 

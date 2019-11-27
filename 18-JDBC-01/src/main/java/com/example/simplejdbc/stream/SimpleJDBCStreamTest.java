@@ -11,28 +11,30 @@ public class SimpleJDBCStreamTest {
 	public static void main(String[] args) throws ClassNotFoundException {
 
 		// Instance of EmployeeDAO class
-		EmployeeDAO employeeDao = null; // ??
+		EmployeeDAO employeeDao = new EmployeeDAO(); // ??
 
 		// Retrieve Employee Stream from Database.
-		Stream<Employee> stream = null; // ??
+		Stream<Employee> stream = employeeDao.getAllEmployeesAsStream(); // ??
 
 		// Collect the results from Database into a List.
-		List<Employee> employees = null; // ??
+		List<Employee> employees = stream.collect(Collectors.toList()); // ??
 
 		// Define a Supplier of Employee Stream
-		Supplier<Stream<Employee>> streamSupplier = null; // ??
+		Supplier<Stream<Employee>> streamSupplier = () -> employees.stream(); // ??
 
 		System.out.println("== All employees ==");
 
 		// List All employees using Stream Supplier object.
-		// ??
+		streamSupplier.get().forEach(System.out::println);// ??
 
 		System.out.println();
 		
 		System.out.println("Michael employees");
 
 		// List All employees named "Michael" using Stream Supplier object.
-		// ??
+		streamSupplier.get()
+				.filter( e -> e.getFirstName().equals("Michael"))
+				.forEach(System.out::println);// ??
 
 		System.out.println();
 		

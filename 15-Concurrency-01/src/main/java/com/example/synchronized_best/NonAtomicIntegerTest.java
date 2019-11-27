@@ -7,7 +7,7 @@ public class NonAtomicIntegerTest {
 
 	public static void main(String[] args) {
 
-		ExecutorService executor = null; // ?? Define a new 8 fixed thread pool
+		ExecutorService executor = Executors.newFixedThreadPool(8); // ?? Define a new 8 fixed thread pool
 
 		NonAtomicInteger counter = new NonAtomicInteger();
 
@@ -23,7 +23,7 @@ class NonAtomicInteger {
 
 	private int counter = 0;
 
-	public int incrementAndGet() { // syncronize for reach atomic operation
+	public synchronized int incrementAndGet() { // syncronize for reach atomic operation
 		try {
 			Thread.sleep(100);
 		} catch (InterruptedException e) {

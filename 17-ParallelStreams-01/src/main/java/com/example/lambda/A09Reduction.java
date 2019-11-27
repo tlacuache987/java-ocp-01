@@ -25,6 +25,7 @@ public class A09Reduction {
 
 		long r2 = LongStream.rangeClosed(1, limit)
 				// ?? compute as parallel // runs in parallel
+				.parallel()
 				.reduce(1, (sum, element) -> sum * element);
 
 		System.out.printf("Result: %,2d %n", r2);
@@ -42,6 +43,7 @@ public class A09Reduction {
 		BigInteger r4 = Stream
 				.iterate(BigInteger.ONE, i -> i.add(BigInteger.ONE))
 				// ?? compute as parallel // runs in parallel
+				.parallel()
 				.limit(limit2)
 				.reduce(BigInteger.ONE, (sum, element) -> sum.multiply(element));
 

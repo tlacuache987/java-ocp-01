@@ -23,7 +23,7 @@ public class A06Determine {
 		double r2 = eList.stream()
 				.filter(e -> e.getState().equals("CO"))
 				.mapToDouble(Employee::getSalary)
-				// ?? compute as parallel()
+				.parallel()// ?? compute as parallel()
 				.sum();
 
 		// Deterministic operations

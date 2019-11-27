@@ -22,7 +22,7 @@ public class A07DetermineNot {
 
 		Optional<Employee> e2 = eList.stream()
 				.filter(e -> e.getRole().equals(Role.MANAGER))
-				// ?? compute as parallel() // runs in parallel
+				.parallel()// ?? compute as parallel() // runs in parallel
 				.findAny();
 
 		System.out.println(e1.get().getGivenName() + " " + e1.get().getSurName());

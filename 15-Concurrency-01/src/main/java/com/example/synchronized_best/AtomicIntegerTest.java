@@ -8,7 +8,7 @@ public class AtomicIntegerTest {
 
 	public static void main(String[] args) {
 
-		ExecutorService executor = null; // ?? Define a new 8 fixed thread pool
+		ExecutorService executor = Executors.newFixedThreadPool(8); // ?? Define a new 8 fixed thread pool
 
 		AnAtomicInteger counter = new AnAtomicInteger();
 

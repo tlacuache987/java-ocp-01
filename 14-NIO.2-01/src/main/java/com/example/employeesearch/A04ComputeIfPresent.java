@@ -18,7 +18,7 @@ public class A04ComputeIfPresent {
 		stMap.put("CO", "Denver");
 
 		// Compute if key "WY" is present on map, set value as value + " (Verified " + key + ")".
-		// ??
+		stMap.computeIfPresent("WY", (k, v) -> v + " :)" );// ??
 
 		System.out.println("=== Print Map ===");
 

@@ -9,7 +9,7 @@ public class PathTest {
 		
 		// Just run it.
 
-		args = new String[] { "src" };
+		args = new String[] { "src/main" };
 
 		Path p1 = Paths.get(args[0]);
 

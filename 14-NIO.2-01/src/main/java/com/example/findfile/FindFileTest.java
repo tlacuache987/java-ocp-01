@@ -18,10 +18,10 @@ public class FindFileTest {
 			System.exit(-1);
 		}
 
-		Path root = null; // ??
-		String pattern = null; // ??
+		Path root = Paths.get(args[0]); // ??
+		String pattern = args[1]; // ??
 
-		boolean isDirectory = false; // ??
+		boolean isDirectory = Files.isDirectory(root); // ??
 		if (!isDirectory) {
 			System.out.println(args[0] + " must be a directory!");
 			System.exit(-1);
@@ -32,13 +32,13 @@ public class FindFileTest {
 		try {
 
 			// Walk thru root files finding files that matches pattern.
-			// ??
+			Files.walkFileTree(root,  finder);// ??
 
 			finder.done();
 
 			System.out.println();
 
-			finder.getMatchedPaths().stream().forEach(System.out::println);
+			finder.getMatchedPaths().forEach(System.out::println);
 
 		} catch (IOException e) {
 			System.out.println("Exception: " + e);

@@ -12,6 +12,8 @@ import java.sql.SQLException;
 
 public class PreparedStatementTest {
 
+	private static final String sql = "SELECT * FROM Employee WHERE Salary > ?";
+
 	public static void main(String[] args) {
 
 		String url = "jdbc:h2:tcp://localhost/data/EmployeeDB";
@@ -24,10 +26,6 @@ public class PreparedStatementTest {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
 		try (Connection con = DriverManager.getConnection(url, username, password)) {
-
-			String sql = "SELECT * FROM Employee WHERE Salary > ?";
-			// Define a PreparedStatement to precompile sql statement.
-			// ??
 
 			// Loop
 			while (true) { // This runs forever until user enters "q" or "Q"
@@ -47,11 +45,14 @@ public class PreparedStatementTest {
 					continue;
 				}
 
+				// Define a PreparedStatement to precompile sql statement.
+				PreparedStatement ps = con.prepareStatement(sql);// ??
+
 				// Sets entered value to PreparedStatement object.
-				// ??
+				ps.setDouble(1, searchValue);// ??
 
 				// Execute PreparedStatement
-				ResultSet rs = null; // ??
+				ResultSet rs = ps.executeQuery(); // ??
 
 				while (rs.next()) {
 
